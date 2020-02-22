@@ -16,23 +16,61 @@ var scenes;
 (function (scenes) {
     var Play = /** @class */ (function (_super) {
         __extends(Play, _super);
-        // PRIVATE INSTANCE MEMBERS
         // PUBLIC PROPERTIES
         // CONSTRUCTOR
         function Play() {
             var _this = _super.call(this) || this;
+            _this.rollResult = [0, 0];
             _this.Start();
             return _this;
         }
         // PRIVATE METHODS
         // PUBLIC METHODS
+        Play.prototype.roll = function () {
+            this.removeChild(this.dice0);
+            this.removeChild(this.dice1);
+            this.removeChild(this.label0);
+            this.removeChild(this.label1);
+            //sound
+            createjs.Sound.play("rollSound");
+            //rand
+            this.rollResult = [Math.floor(util.Mathf.RandomRange(1, 6)), Math.floor(util.Mathf.RandomRange(1, 6))];
+            console.log(this.rollResult[0].toString());
+            this.label0 = new objects.Label(this.rollResult[0].toString(), "24px", "Consolas", "#000000", 120, 360, true);
+            this.label1 = new objects.Label(this.rollResult[1].toString(), "24px", "Consolas", "#000000", 460, 360, true);
+            this.dice0 = new objects.Button(config.Game.ASSETS.getResult(this.rollResult[0]), 120, 180, true);
+            this.dice1 = new objects.Button(config.Game.ASSETS.getResult(this.rollResult[1]), 460, 180, true);
+            //
+            this.addChild(this.dice0);
+            this.addChild(this.dice1);
+            this.addChild(this.label0);
+            this.addChild(this.label1);
+        };
         //initialize and instatiate
         Play.prototype.Start = function () {
+            var _this = this;
+            //sound
+            createjs.Sound.registerSound("./Assets/audio/bulletFire.wav", "rollSound");
+            //objects
+            this.dice0 = new objects.Button(config.Game.ASSETS.getResult("1"), 120, 180, true);
+            this.dice1 = new objects.Button(config.Game.ASSETS.getResult("1"), 460, 180, true);
+            this.label0 = new objects.Label("1", "24px", "Consolas", "#000000", 120, 360, true);
+            this.label1 = new objects.Label("1", "24px", "Consolas", "#000000", 460, 360, true);
+            this.rollButton = new objects.Button(config.Game.ASSETS.getResult("button"), 320, 430, true);
+            this.rollButton.on("click", function () {
+                _this.roll();
+                console.log("roll!!!");
+            });
             this.Main();
         };
         Play.prototype.Update = function () {
         };
         Play.prototype.Main = function () {
+            this.addChild(this.dice0);
+            this.addChild(this.dice1);
+            this.addChild(this.label0);
+            this.addChild(this.label1);
+            this.addChild(this.rollButton);
         };
         return Play;
     }(objects.Scene));
