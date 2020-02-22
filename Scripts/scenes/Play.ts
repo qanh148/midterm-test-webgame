@@ -34,10 +34,10 @@ module scenes
             //rand
             this.rollResult= [Math.floor(util.Mathf.RandomRange(1,6)),Math.floor(util.Mathf.RandomRange(1,6))];
             console.log(this.rollResult[0].toString());
-            this.label0 = new objects.Label(this.rollResult[0].toString(), "24px", "Consolas", "#000000", 120, 360, true);
-            this.label1 = new objects.Label(this.rollResult[1].toString(), "24px", "Consolas", "#000000", 460, 360, true);
-            this.dice0 = new objects.Button(config.Game.ASSETS.getResult(this.rollResult[0]),120,180,true);
-            this.dice1 = new objects.Button(config.Game.ASSETS.getResult(this.rollResult[1]),460,180,true);
+            this.label0 = new objects.Label(this.rollResult[0].toString(), "24px", "Consolas", "#000000", 200, 300, true);
+            this.label1 = new objects.Label(this.rollResult[1].toString(), "24px", "Consolas", "#000000", 420, 300, true);
+            this.dice0 = new objects.Button(config.Game.ASSETS.getResult(this.rollResult[0]),200,180,true);
+            this.dice1 = new objects.Button(config.Game.ASSETS.getResult(this.rollResult[1]),420,180,true);
             //
             this.addChild(this.dice0);
             this.addChild(this.dice1);
@@ -50,10 +50,10 @@ module scenes
             //sound
             createjs.Sound.registerSound("./Assets/audio/bulletFire.wav", "rollSound");
             //objects
-            this.dice0 = new objects.Button(config.Game.ASSETS.getResult("1"),120,180,true);
-            this.dice1 = new objects.Button(config.Game.ASSETS.getResult("1"),460,180,true);
-            this.label0 = new objects.Label("1", "24px", "Consolas", "#000000", 120, 360, true);
-            this.label1 = new objects.Label("1", "24px", "Consolas", "#000000", 460, 360, true);
+            this.dice0 = new objects.Button(config.Game.ASSETS.getResult("1"),200,180,true);
+            this.dice1 = new objects.Button(config.Game.ASSETS.getResult("1"),420,180,true);
+            this.label0 = new objects.Label("1", "24px", "Consolas", "#000000", 200, 300, true);
+            this.label1 = new objects.Label("1", "24px", "Consolas", "#000000", 420, 300, true);
             this.rollButton = new objects.Button(config.Game.ASSETS.getResult("button"),320,430,true);
             
             this.rollButton.on("click", ()=>{
