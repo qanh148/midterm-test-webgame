@@ -56,7 +56,7 @@ var scenes;
             this.dice1 = new objects.Button(config.Game.ASSETS.getResult("1"), 420, 180, true);
             this.label0 = new objects.Label("1", "24px", "Consolas", "#000000", 200, 300, true);
             this.label1 = new objects.Label("1", "24px", "Consolas", "#000000", 420, 300, true);
-            this.rollButton = new objects.Button(config.Game.ASSETS.getResult("button"), 320, 430, true);
+            this.rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
             this.rollButton.on("click", function () {
                 _this.roll();
                 console.log("roll!!!");
